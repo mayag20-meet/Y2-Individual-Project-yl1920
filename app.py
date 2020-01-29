@@ -44,6 +44,9 @@ def signin():
 def homepage():
 	info = profile(session['using'])
 	return render_template("homepage.html", name=info[0], year=info[1], challanges=info[2])
+
+@app.rout('/homepage/post', methods=['GET', 'POST'])
+def post():
 	
 
 
