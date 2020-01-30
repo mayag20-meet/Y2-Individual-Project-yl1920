@@ -11,11 +11,19 @@ class User(Base):
 	year = Column(Integer)
 	challanges = Column(String)
 
+	def __repr__(self):
+		listu = [self.username, self.name, self.password, self.year, self.challanges]
+		return str(listu)
+
 
 class Challange(Base):
 	__tablename__ = 'challanges'
-	id = Column(String, primary_key=True)
+	id = Column(Integer, primary_key=True)
 	category = Column(String)
 	name = Column(String)
 	description = Column(String)
 	# location = Column(String)
+
+	def __repr__(self):
+		listc = [self.category, self.name, self.description]
+		return str(listc)

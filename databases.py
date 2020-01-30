@@ -1,4 +1,4 @@
-from model import Base, User, Challanges
+from model import Base, User, Challange
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -27,25 +27,31 @@ def verify_user(u, p):
 	else:
 		return False
 
-def profile(id): 
+def profile(uname): 
 	loggedin = session.query(
 		User).filter_by(
-		username=id).first()
+		username=uname).first()
 	name=loggedin.name
 	year=loggedin.year
 	challanges=loggedin.challanges
-	return (name, year, challanges)
+	return [name, year, challanges]
    
-def upload_challange(id, category, name, description):
-		challange_object = challange(
-		id = id, 
+def upload_challange(category, name, description):
+	challange_object = Challange(
 		category = category,
 		name = name, 
 		description = description)
 	session.add(challange_object)
 	session.commit()
 
-       
+def querry_all_u():
+	users=session.query(User).all()
+	return users
+
+def querry_all_c():
+	challanges=session.query(Challange).all()
+	return challanges
+
 # def get_user():	
 
 # def edit_user():
