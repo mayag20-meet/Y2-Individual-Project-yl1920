@@ -23,7 +23,7 @@ def signup():
 		username = request.form['username']
 		year = request.form['year']
 		add_user(username, name, year, password)
-        return render_template('homepage.html',
+        return render_template('homepage.html'
             name = name,
             year = year)
 
